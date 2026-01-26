@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<!-- WAJIB agar responsif di HP -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Selamat Ulang Tahun Hafni Aisyah 🌸</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fbc2eb, #f9c5d1, #fadadd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    padding: 30px 25px;
+    border-radius: 25px;
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(255,105,180,0.25);
+    animation: fadeIn 1.5s ease;
+}
+
+h1 {
+    color: #e75480;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    background: #e75480;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 6px;
+}
+
+button:hover {
+    background: #d63a6c;
+    transform: scale(1.05);
+}
+
+#noBtn {
+    background: #bdbdbd;
+}
+
+.gift {
+    font-size: 55px;
+    cursor: pointer;
+    margin: 10px 0;
+    animation: bounce 1.6s infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+.note {
+    margin-top: 16px;
+    color: #e75480;
+    font-size: 15px;
+}
+
+.choice {
+    margin-top: 10px;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Tambahan agar nyaman di layar kecil */
+@media (max-width: 400px) {
+    h1 { font-size: 22px; }
+    p, .note { font-size: 14px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Musik latar (jalan setelah klik) -->
+<audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/26/audio_9b0c60c73e.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+    <h1>🎂 Selamat Ulang Tahun 🎀</h1>
+
+    <p>
+        Selamat ulang tahun, <b>Hafni Aisyah</b> 🌸<br>
+        Semoga di usia yang baru ini,  
+        langkahmu selalu dimudahkan,  
+        hatimu tetap hangat,  
+        dan hal-hal baik terus datang  
+        tanpa perlu kamu minta ✨
+    </p>
+
+    <p style="margin-top:15px;">Ada sesuatu untukmu 🎁</p>
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <!-- Ajakan -->
+    <div id="invite" class="hidden">
+        <p class="note">
+            Aku menyiapkan sebuah kado kecil,  
+            bukan hanya sebagai hadiah,  
+            tapi juga sebagai niat baik 🌸<br><br>
+            Jika kamu berkenan,  
+            aku ingin memberikannya  
+            pada tanggal <b>14 Februari</b> 🤍
+        </p>
+
+        <div class="choice">
+            <button onclick="yesAnswer()">YES 🤍</button>
+            <button id="noBtn" onclick="noAnswer()">NO 🙈</button>
+        </div>
+    </div>
+
+    <!-- Pesan akhir -->
+    <div id="finalNote" class="hidden note">
+        Terima kasih sudah berkenan 🌸<br><br>
+        Semoga hal sederhana ini  
+        bisa menjadi bagian kecil  
+        dari hari baikmu,  
+        dan semoga tanggal 14 Februari  
+        nanti terasa hangat dan berkesan 🤍✨
+    </div>
+
+</div>
+
+<script>
+let noScale = 1;
+
+function openGift() {
+    document.getElementById("invite").classList.remove("hidden");
+    document.getElementById("bgMusic").play();
+}
+
+function yesAnswer() {
+    document.getElementById("invite").classList.add("hidden");
+    document.getElementById("finalNote").classList.remove("hidden");
+}
+
+function noAnswer() {
+    const noBtn = document.getElementById("noBtn");
+    noScale -= 0.15;
+    if (noScale <= 0) {
+        noBtn.style.display = "none";
+    } else {
+        noBtn.style.transform = `scale(${noScale})`;
+    }
+}
+</script>
+
+</body>
+</html>
